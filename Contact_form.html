@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="Stylesheet/Stylesheetcontform.css">
+    <link rel="stylesheet" href="Stylesheet/style.css">
+</head>
+
+<body bgcolor="black">
+    <div class="container">
+        <form onsubmit="sendEmail();">
+            <h1 text-align="center" >Your contact details</h1>
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="Email id" required>
+            <input type="text" id="phone" placeholder="Phone number" required>
+            <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+            <button type="submit" >Send</button>
+        </form>
+    </div>
+    
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "shreyabharatmarda@gmail.com",
+                Password: "2B2859589FCAD3408EEEA1E0CDC57C8C7D36",
+                To: 'shreyabharatmarda@gmail.com',
+                From: document.getElementbyId('email').value,
+                Subject: "Gym enquiry",
+                Body: "Name: " + document.getElementById('name').value 
+                + "<br>" + "Email id: " + document.getElementById('email').value 
+                + "<br>" + "Phone number: " + document.getElementById("phone").value 
+                + "<br>" + "Message: " + document.getElementById('message').value 
+            }).then(
+                message => alert("Your query will be addressed soon!")
+            );
+        }
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</body>
+
+</html>

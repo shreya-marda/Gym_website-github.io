@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+    <title>Payment Portal</title>
+
+    <!--Library for stripe checkout-->
+    <link href="Stylesheet/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <img class="name" src="Images/logo.png" width="100%" ; height="25%">
+        <div class="centered">
+            <h1>Fitness Club</h1>
+        </div>
+        <div class="bottom-right"><i>Enjoy the glow of <i><b>Good health</b></i>!</i></div>
+    </div>
+
+    <hr>
+    <div class="header">
+
+        <nav style="color: rgb(70, 4, 4);">
+            <ul style="font-size: 20px;">
+                <li><a class="active" href="Gym.html">Home</a></li>
+                <li><a href="Form.html">Application form </a></li>
+                <li><a href="Contact_form.html">Contact</a></li>
+                <li><a href="Payment.html">Payment Portal</a></li>
+            </ul>
+        </nav>
+    </div>
+    <hr>
+    <h3>Payment Portal</h3>
+    <hr>
+    <br>
+
+    <pre style="font-size: 20px;">
+        1. Basic Membership - Rs /-
+        -> Body Building
+        2. Premium Membership - Rs /-
+        -> Body Building
+        -> Cardio
+        3. VIP Membership - Rs /-
+        ->Body building
+        ->Cardio
+        ->Personal training
+        
+</pre>
+    <button style="padding: 14px 16px; background-color: brown; color: azure; " id="checkout">Checkout</button>
+    <!--Checkout button-->
+
+    <script>
+        var stripe = Stripe(
+            "pk_test_51LVWdzSDW6E45psJyKaKkEMuuwA2iifvwVWGgzB7uPnqePAr4ynxbWRL65gpZR2XaVO1PQGRAaK3AiR2aFCZlmZ5000R44vZNF"
+        ); //Stripe account required
+        document.getElementById("checkout").addEventListener("click", function () {
+            stripe.redirectToCheckout({
+                lineItems: [
+                    {
+                        price: "price_1LVWq6SDW6E45psJ0ksOr37O",
+                        quantity: 1,
+                    },
+                ],
+                mode: "subscription",
+                successUrl: "https://www.google.com/",
+                cancelUrl: "https://www.twtter.com/",
+            }).then(function (result) {
+
+            });
+
+        })
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+</body>
+
+</html>

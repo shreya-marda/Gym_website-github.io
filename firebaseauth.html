@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="Stylesheet/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <img class="name" src="Images/logo.png" width="100%" ; height="25%">
+        <div class="centered">
+            <h1>FITNESS CLUB</h1>
+        </div>
+        <div class="bottom-right"><i>Enjoy the glow of <i><b>Good health</b></i>!</i></div>
+    </div>
+
+    <hr>
+    <div class="header">
+
+        <nav style="color: rgb(70, 4, 4);">
+            <ul style="font-size: 20px;">
+                <li><a class="active" href="Gym.html">Home</a></li>
+                <li><a href="Form.html">Application form </a></li>
+                <li><a href="Contact_form.html">Contact</a></li>
+                <li><a href="Payment.html">Payment Portal</a></li>
+            </ul>
+        </nav>
+    </div>
+    <hr>
+    <h1>Firebase authentication</h1>
+    <div id="loginscreen">
+        <button id="login">Login with google</button>
+    </div>
+    <div id="dashboard">
+        <div id="userDetails"></div>
+        <button id="logout">Logout</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    
+    <script>
+        document.getElementById('LoginScreen').style.display="none"
+        document.getElementById('dashboard').style.display="block"
+
+        document.getElementById('login').addEventListener('click', GoogleLogin);
+        document.getElementById('logout').addEventListener('click', LogoutUser);
+
+        let provider = new firebase.auth.GoogleAuthProvider();
+
+        function GoogleLogin(){
+            console.log("Login Btn Call")
+            firebase.auth().signInWithPopup(provider).then(res=>{
+                console.log(res.user)
+                showUserDetails(res.user)
+            }).catch(e=>{
+                console.log(e)
+            })
+        }
+
+        function checkAuthState(){
+            firebase.auth().OnAuthoStateChanged(user=>{
+                if (user){
+                    document.getElementById('LoginScreen').style.display="none"
+        document.getElementById('dashboard').style.display="block"
+        showUserDetails(user)
+                }else{
+
+                }
+           })
+        }
+
+        function showUserDetails(user){
+            document.getElementById("userDetails").innerHTML = "<img src='${user.photoURL}'  style='width:10%;'> <p>Name: ${user.displayName}</p> <p>Email: ${user.email}</p>"
+        }
+
+        function logoutUser(){
+            console.log("Logout Btn Call")
+            firebase.auth().signout().then(()=>{
+                document.getElementById('LoginScreen').style.display="block"
+        document.getElementById('dashboard').style.display="none"
+            }).catch(e=>{
+                console.log(e)
+            })
+        }
+
+        
+        checkAuthState()
+        
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCsNstt4gtUX8VcGOHn93EenjBxbJS0SvE",
+          authDomain: "shreya-be602.firebaseapp.com",
+          projectId: "shreya-be602",
+          storageBucket: "shreya-be602.appspot.com",
+          messagingSenderId: "455453119494",
+          appId: "1:455453119494:web:3754ae335209e41a225f87",
+          measurementId: "G-YBF03QKNEK"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<html>
+
+<head>
+   <style>
+.container {
+    position: relative;
+    text-align: center;
+    color: rgb(247, 247, 247);
+    background-color: rgb(70, 4, 4);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 30;
+}
+
+div.header {
+    display: flex;
+    justify-content: space-between;
+    background: orange;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: orange;
+}
+
+li {
+    float: left;
+    text-align: center;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px 100px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: brown;
+}
+
+div.container .name {
+    width: 20%;
+    margin-left: 0px;
+    margin-right: 100%;
+}
+   </style>
+</head>
+
+<body bgcolor="orange">
+    <div class="container">
+        <img class="name" src="Images/logo.png" width="100%" ; height="25%">
+        <div class="centered">
+            <h1>FITNESS CLUB</h1>
+        </div>
+        <div class="bottom-right"><i>Enjoy the glow of <i><b>Good health</b></i>!</i></div>
+    </div>
+
+    <hr>
+    <div class="header">
+
+        <nav style="color: rgb(70, 4, 4);">
+            <ul style="font-size: 20px;">
+                <li><a class="active" href="Gym.html">Home</a></li>
+                <li><a href="Form.html">Application form </a></li>
+                <li><a href="Contact_form.html">Contact</a></li>
+                <li><a href="Payment.html">Payment Portal</a></li>
+            </ul>
+        </nav>
+    </div>
+   
+    <hr>
+    <h1 style="background-color:darkgrey" text-align="center">Form for Subscription</h1>
+    <label>Name: </label><br>
+    <input name="name" id="name" type="text">
+    <br><br>
+    <label>Age: </label><br>
+    <input name="age" id="age">
+    <br><br>
+    <label>Height (in cm): </label><br>
+    <input name="ht" id="ht">
+    <br><br>
+    <label>Weight (in kg): </label><br>
+    <input name="wt" id="wt">
+    <br><br>
+    <label>Sex: </label><br>
+    <input name="sex" id="sex">
+    <br><br>
+    <label>Health issues(if any): </label><br>
+    <input name="hlthiss" id="hlthiss">
+    <br><br>
+    <label>Subscriptions: </label><br>
+    <select name="sub" id="sub">
+        <option value="NA">Select your subscription</option>
+        <option value="Basic">Basic Membership</option>
+        <option value="Premium">Premium Membership</option>
+        <option value="VIP">VIP Membership</option>
+    </select>
+    <br><br><br>
+    <button style="color:brown ; border:1px;" type="submit"><b>Submit</b></button>
+    <br>
+    <br>
+    <hr>
+    <h2 text-align="center">Subscriptions</h2>
+    <ul>
+        <li>Basic Membership</li>
+        <ul type="square">
+            <li>Body Building</li>
+        </ul>
+        <li>Premium Membership</li>
+        <ul type="square">
+            <li>Body building</li>
+            <li>Cardio</li>
+        </ul>
+        <li>VIP Membership</li>
+        <ul type="square">
+            <li>Body building</li>
+            <li>Cardio</li>
+            <li>Personal training</li>
+        </ul>
+    </ul>
+    <script>
+        function Submit() {
+            document.getElementById("name").innerHTML = "";
+            document.getElementById("age").value = "";
+            document.getElementById("ht").value = "";
+            document.getElementById("wt").value = "";
+            document.getElementById("sex").value = "";
+            document.getElementById("hlthiss").innerHTML = "";
+            document.getElementById("sub").value = ""; 
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
